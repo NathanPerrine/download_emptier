@@ -21,7 +21,8 @@ def move_file(from_box, to_box):
     #   Move file to new directory
     #   Reset downloads list
     #   Display what moved to where
-    selected_files = dl_list_box.curselection()
+    # selected_files = dl_list_box.curselection()
+    pass
 
 
 def fill_list_box(box, info: List) -> None:
@@ -34,12 +35,13 @@ def fill_list_box(box, info: List) -> None:
 def main():
     ### Main Window ###
     window = tk.Tk()
-    window.geometry('1000x500')
+    window.geometry('700x350')
 
     ### Downloads ### 
     # DL LabelFrame
     dl_frame = tk.LabelFrame(window, text="Downloads")
-    dl_frame.pack(padx=20, pady=20)
+    # dl_frame.pack(padx=20, pady=20)
+    dl_frame.grid(row=0, column=2, padx=20, pady=20)
 
     # DL Listbox
     dl_list = os.listdir('D:\Downloads')
@@ -50,13 +52,23 @@ def main():
 
     ### Arrow Button ### 
     # Arrow Frame
-    arrow_frame = tk.Frame(window)
-    arrow_frame.pack()
+    arrow_frame = tk.Frame(window, highlightbackground='black', highlightthickness=1)
+    # arrow_frame.pack(side=tk.LEFT)
+    arrow_frame.grid(row=0, column=3, padx=5)
 
     # Arrow Button
     arrow_button = tk.Button(arrow_frame, text="->")
     arrow_button.pack()
 
+
+    ### Destinations ### 
+    # Dest. frame 
+    destination_frame = tk.LabelFrame(window, text="Destination")
+    destination_frame.grid(row=0, column=4, padx=20, pady=20)
+
+    # Dest. Listbox 
+    destination_list_box = tk.Listbox(destination_frame)
+    destination_list_box.pack(padx=10, pady=10)
 
     ### Main Loop ### 
     window.mainloop()
